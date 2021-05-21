@@ -6,15 +6,15 @@ import 'dart:convert';
 
 class UserDetails {
   UserDetails({
-    this.seoCategoryInfos,
-    this.loggingPageId,
-    this.showSuggestedProfiles,
-    this.showFollowDialog,
+    // this.seoCategoryInfos,
+    // this.loggingPageId,
+    // this.showSuggestedProfiles,
+    // this.showFollowDialog,
     this.graphql,
-    this.toastContentOnLoad,
-    this.showViewShop,
-    this.profilePicEditSyncProps,
-    this.alwaysShowMessageButtonToProAccount,
+    // this.toastContentOnLoad,
+    // this.showViewShop,
+    // this.profilePicEditSyncProps,
+    // this.alwaysShowMessageButtonToProAccount,
   });
 
   List<List<String>>? seoCategoryInfos;
@@ -31,28 +31,28 @@ class UserDetails {
       UserDetails.fromMap(json.decode(str!));
 
   factory UserDetails.fromMap(Map<String?, dynamic> json) => UserDetails(
-        seoCategoryInfos: json["seo_category_infos"] == null
-            ? null
-            : List<List<String>>.from(json["seo_category_infos"]
-                .map((x) => List<String?>.from(x.map((x) => x)))),
-        loggingPageId:
-            json["logging_page_id"] == null ? null : json["logging_page_id"],
-        showSuggestedProfiles: json["show_suggested_profiles"] == null
-            ? null
-            : json["show_suggested_profiles"],
-        showFollowDialog: json["show_follow_dialog"] == null
-            ? null
-            : json["show_follow_dialog"],
+        // seoCategoryInfos: json["seo_category_infos"] == null
+        //     ? null
+        //     : List<List<String>>.from(json["seo_category_infos"]
+        //         .map((x) => List<String?>.from(x.map((x) => x)))),
+        // loggingPageId:
+        //     json["logging_page_id"] == null ? null : json["logging_page_id"],
+        // showSuggestedProfiles: json["show_suggested_profiles"] == null
+        //     ? null
+        //     : json["show_suggested_profiles"],
+        // showFollowDialog: json["show_follow_dialog"] == null
+        //     ? null
+        //     : json["show_follow_dialog"],
         graphql:
             json["graphql"] == null ? null : Graphql.fromMap(json["graphql"]),
-        toastContentOnLoad: json["toast_content_on_load"],
-        showViewShop:
-            json["show_view_shop"] == null ? null : json["show_view_shop"],
-        profilePicEditSyncProps: json["profile_pic_edit_sync_props"],
-        alwaysShowMessageButtonToProAccount:
-            json["always_show_message_button_to_pro_account"] == null
-                ? null
-                : json["always_show_message_button_to_pro_account"],
+        // toastContentOnLoad: json["toast_content_on_load"],
+        // showViewShop:
+        //     json["show_view_shop"] == null ? null : json["show_view_shop"],
+        // profilePicEditSyncProps: json["profile_pic_edit_sync_props"],
+        // alwaysShowMessageButtonToProAccount:
+        //     json["always_show_message_button_to_pro_account"] == null
+        //         ? null
+        //         : json["always_show_message_button_to_pro_account"],
       );
 }
 

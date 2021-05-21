@@ -11,7 +11,7 @@ Future<UserDetails?> loadUserDetail(String userName) async {
     var uriResponse = await client.get(
       Uri.parse(url),
     );
-    return UserDetails.fromJson(json.decode(uriResponse.body));
+    return UserDetails.fromJson(uriResponse.body.toString());
   } on Exception catch (ex) {
     print(ex);
   } finally {
