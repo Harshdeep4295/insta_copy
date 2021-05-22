@@ -108,7 +108,7 @@ class _InstaDashboardState extends State<InstaDashboard> {
                     color: Colors.grey.shade600,
                   ),
                   DisplayPosts(user: snapshot.data!.graphql!.user),
-                  SizedBox(height: 50),
+                  Container(height: 1),
                 ],
                 if (snapshot.connectionState == ConnectionState.done &&
                     snapshot.data != null &&
@@ -122,7 +122,8 @@ class _InstaDashboardState extends State<InstaDashboard> {
                       ),
                     ),
                   )
-                ]
+                ],
+                SizedBox(height: 50),
               ],
             );
           },

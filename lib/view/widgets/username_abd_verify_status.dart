@@ -21,15 +21,14 @@ class DisplayUserNameAndVerifyStatus extends StatelessWidget {
           fontSize: 22,
           fontWeight: FontWeight.bold,
         ),
-        SizedBox(width: 10),
+        SizedBox(width: 5),
         Visibility(
           visible: isVerified,
-          child: Container(
-            height: 20,
-            width: 20,
-            foregroundDecoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: Colors.blue.shade600,
+          child: Center(
+            child: Container(
+              height: 22,
+              width: 22,
+              child: Image.asset('assets/verified.png'),
             ),
           ),
         )
