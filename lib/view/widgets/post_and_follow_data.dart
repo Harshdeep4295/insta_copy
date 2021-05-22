@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:insta_copy/utils/utility.dart';
 import 'package:insta_copy/utils/widgets/display_text.dart';
 
 class PostAndFollowData extends StatelessWidget {
@@ -19,17 +20,17 @@ class PostAndFollowData extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         DisplayText(
-          data: '$posts Posts',
+          data: '${Utility.getValue(posts)} Posts',
           fontSize: 14,
           fontWeight: FontWeight.bold,
         ),
         DisplayText(
-          data: '$followedBy followers',
+          data: '${Utility.getValue(followedBy)} followers',
           fontSize: 14,
           fontWeight: FontWeight.bold,
         ),
         DisplayText(
-          data: '$following following',
+          data: '${Utility.getValue(following)} following',
           fontSize: 14,
           fontWeight: FontWeight.bold,
         )

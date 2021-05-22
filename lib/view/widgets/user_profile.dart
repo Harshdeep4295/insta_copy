@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:insta_copy/model/user_detail.dart';
+import 'package:insta_copy/utils/widgets/display_text.dart';
+import 'package:insta_copy/view/widgets/display_posts.dart';
 import 'package:insta_copy/view/widgets/post_and_follow_data.dart';
 import 'package:insta_copy/view/widgets/username_abd_verify_status.dart';
 import 'package:insta_copy/view/widgets/username_and_status.dart';
 
 import 'follow_and_more_buttons.dart';
 
-class UserProfile extends StatelessWidget {
+class UserProfile extends StatefulWidget {
   const UserProfile({
     Key? key,
     required this.user,
@@ -14,10 +16,15 @@ class UserProfile extends StatelessWidget {
 
   final User? user;
 
+  @override
+  _UserProfileState createState() => _UserProfileState();
+}
+
+class _UserProfileState extends State<UserProfile> {
   Widget profilePic(String? url) {
     return Container(
-      height: 150,
-      width: 150,
+      height: 125,
+      width: 125,
       margin: EdgeInsets.only(left: 10, top: 20),
       decoration: BoxDecoration(
         shape: BoxShape.circle,
@@ -51,6 +58,7 @@ class UserProfile extends StatelessWidget {
               fullName: user.fullName!,
               biography: user.biography!,
             ),
+            SizedBox(height: 20),
           ],
         ),
       ),
@@ -66,9 +74,9 @@ class UserProfile extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          profilePic(user!.profilePicUrlHd),
+          profilePic(widget.user!.profilePicUrlHd),
           SizedBox(height: 40),
-          userPorfileDetails(user!),
+          userPorfileDetails(widget.user!),
         ],
       ),
     );

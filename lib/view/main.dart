@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:insta_copy/apis/call_data.dart';
 import 'package:insta_copy/model/user_detail.dart';
 import 'package:insta_copy/utils/widgets/display_text.dart';
+import 'package:insta_copy/view/widgets/display_posts.dart';
 import 'package:insta_copy/view/widgets/user_profile.dart';
 
 void main() {
@@ -78,7 +79,10 @@ class _InstaDashboardState extends State<InstaDashboard> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: DisplayText(data: 'Instagram - Dashboard'),
+        title: DisplayText(
+          data: 'Instagram - Dashboard',
+          color: Colors.white,
+        ),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
@@ -87,14 +91,38 @@ class _InstaDashboardState extends State<InstaDashboard> {
           builder: (context, snapshot) {
             return Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
-              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                getUserName(),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: getUserName(),
+                ),
                 if (snapshot.connectionState == ConnectionState.waiting)
                   ...loadingWidget(),
                 if (snapshot.hasData && snapshot.data!.graphql != null) ...[
-                  UserProfile(user: snapshot.data!.graphql!.user)
+                  UserProfile(user: snapshot.data!.graphql!.user),
+                  Divider(
+                    thickness: 2,
+                    indent: 25,
+                    endIndent: 25,
+                    color: Colors.grey.shade600,
+                  ),
+                  DisplayPosts(user: snapshot.data!.graphql!.user),
+                  SizedBox(height: 50),
                 ],
+                if (snapshot.connectionState == ConnectionState.done &&
+                    snapshot.data != null &&
+                    snapshot.data!.graphql == null) ...[
+                  Padding(
+                    padding: const EdgeInsets.only(top: 100.0),
+                    child: Center(
+                      child: DisplayText(
+                        data:
+                            'No User Found with ${_textEditingController.text.toString()}',
+                      ),
+                    ),
+                  )
+                ]
               ],
             );
           },
