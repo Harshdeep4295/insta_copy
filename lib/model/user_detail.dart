@@ -1062,15 +1062,14 @@ final fluffyTypenameValues = EnumValues({
 });
 
 class EnumValues<T> {
-  late Map<String?, T> map;
-  late Map<T, String?> reverseMap;
+  late Map<String, T> map;
+  late Map<T, String> reverseMap;
 
   EnumValues(this.map);
 
   Map<T, String?> get reverse {
-    if (reverseMap == null) {
-      reverseMap = map.map((k, v) => new MapEntry(v, k));
-    }
+    reverseMap = map.map((k, v) => new MapEntry(v, k));
+
     return reverseMap;
   }
 }
