@@ -1,4 +1,6 @@
 import 'package:async/async.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:insta_copy/apis/call_data.dart';
 import 'package:insta_copy/model/user_detail.dart';
@@ -63,7 +65,12 @@ class _InstaDashboardState extends State<InstaDashboard> {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10),
             ),
-            onPressed: () {
+            onPressed: () async {
+              // Initialize Firebase.
+              await Firebase.initializeApp();
+
+              // Elsewhere in your code
+              FirebaseCrashlytics.instance.crash();
               setState(() {
                 _userDetails = new AsyncMemoizer();
               });

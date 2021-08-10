@@ -1,5 +1,7 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:insta_copy/utils/widgets/display_text.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 
 class FollowAndMoreButton extends StatelessWidget {
   const FollowAndMoreButton({
@@ -30,7 +32,13 @@ class FollowAndMoreButton extends StatelessWidget {
           onPressed: () {},
         ),
         MaterialButton(
-          onPressed: () {},
+          onPressed: () async {
+            // Initialize Firebase.
+            await Firebase.initializeApp();
+
+            // Elsewhere in your code
+            FirebaseCrashlytics.instance.crash();
+          },
           minWidth: 20,
           child: Container(
             height: 30,
